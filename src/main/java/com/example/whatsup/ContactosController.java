@@ -10,11 +10,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 
 public class ContactosController {
 
-    BusinessLogic businessLogic = BusinessLogic.getInstance();
+
 
     @FXML
     void ckmigue(ActionEvent event) throws IOException {

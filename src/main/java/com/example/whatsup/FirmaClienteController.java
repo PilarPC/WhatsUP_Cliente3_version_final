@@ -9,10 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.FileDialog;
+import java.io.*;
 import java.util.HashMap;
 
 public class FirmaClienteController {
+    BusinessLogic businessLogic = BusinessLogic.getInstance();
 
     @FXML
     private Button miguel;
@@ -28,11 +31,8 @@ public class FirmaClienteController {
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("contactos.fxml"));
         root=fxmlLoader.load();
-        //Contactos Controller contactosController=fxmlLoader.getController();
-        //contactosController.userChat("Miguel");
-        //instanciar paquet
-        //.Establecer(new Paquete("",9001,9003));
-//stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -44,10 +44,8 @@ public class FirmaClienteController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("contactos.fxml"));
         root=fxmlLoader.load();
         ContactosController contactosController=fxmlLoader.getController();
-        //contactosController.userChat("Miguel");
-        //instanciar paquet
-        //contactosController.businessLogic(new BusinessLogic());
-//stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -55,14 +53,43 @@ public class FirmaClienteController {
 
     @FXML
     void ckSantiago(ActionEvent event) throws IOException {
+        //D:\IJ\proyectos\cerificado10001.txt
+        String fd = JOptionPane.showInputDialog("Ruta del certificado: ");
+
+        File file = new File(fd);
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);   // creates a buffering character input stream
+        String line;
+        int lineCounter = 0;
+        while ((line = br.readLine()) != null) {
+            if (lineCounter == 0) {
+                businessLogic.numeroCertificado = Integer.parseInt(line);
+            }
+            lineCounter++;
+        }
+        fr.close(); // closes the stream and release the resources
+
+//----------------------------llave privada ---------------- D:\IJ\proyectos\llavePrivada10001.key
+        fd = JOptionPane.showInputDialog("Ruta de la llave privada: ");
+
+        file = new File(fd);
+        fr = new FileReader(file);
+        br = new BufferedReader(fr);   // creates a buffering character input stream
+
+        lineCounter = 0;
+        while ((line = br.readLine()) != null) {
+            if (lineCounter == 0) {
+                businessLogic.llavePrivada = Integer.parseInt(line);
+            }
+            lineCounter++;
+        }
+        fr.close(); // closes the stream and release the resources
+
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("contactos.fxml"));
         root=fxmlLoader.load();
-        //Contactos Controller contactosController=fxmlLoader.getController();
-        //contactosController.userChat("Miguel");
-        //instanciar paquet
-        //.Establecer(new Paquete("",9001,9003));
-//stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -77,6 +104,8 @@ class BusinessLogic {
     private static BusinessLogic INSTANCE;
 
     public HashMap<String, Integer> userPorts = new HashMap<>();
+    int llavePrivada;
+    int numeroCertificado;
 
     private BusinessLogic() {
         this.userPorts.put("Miguel", 9003);
