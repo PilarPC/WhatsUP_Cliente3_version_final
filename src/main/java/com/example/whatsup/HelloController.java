@@ -48,9 +48,9 @@ public class HelloController implements Runnable{
 
 
 
-    public void userChat(String n){
+    /*public void userChat(String n){
         nombre.setText(n);
-    }
+    }*/
 
     @FXML
     void ckregreso(ActionEvent event) throws IOException {
@@ -486,7 +486,7 @@ public class HelloController implements Runnable{
     public void escribir(Paquete paquete)  throws IOException{
         // FileWriter escritura = new FileWriter("D:/IJ/proyectos/nuevo.txt");
         try{
-            FileOutputStream escribe=new FileOutputStream("D:/IJ/proyectos/chatSanty.txt");
+            FileOutputStream escribe=new FileOutputStream("D:/IJ/proyectos/chatPily.txt");
             ObjectOutputStream flujo_salida=new ObjectOutputStream(escribe);
             Paquete paqueteEnviar = new Paquete(paquete.getMensaje(),paquete.getPuertoE(),paquete.getpPuertoR());
             paqueteEnviar.setNuevoTiempo(paquete.getTiempo());
@@ -501,7 +501,7 @@ public class HelloController implements Runnable{
     }
     public void leer(){
         try{
-            FileInputStream cargarDatos=new FileInputStream("D:/IJ/proyectos/chatSanty.txt");
+            FileInputStream cargarDatos=new FileInputStream("D:/IJ/proyectos/chatPily.txt");
             ObjectInputStream entrada=new ObjectInputStream(cargarDatos);
             baseDeDatos =(List<Paquete>)entrada.readObject();
             for(Paquete cargar: baseDeDatos){

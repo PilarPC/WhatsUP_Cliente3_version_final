@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Paquete implements Serializable {
     private String mensaje;
-    private String  emisor = "Santiago";
+    private String  emisor = "Pilar";
     private String tipiM = "";
 
 

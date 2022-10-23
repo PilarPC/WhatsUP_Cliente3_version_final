@@ -37,7 +37,7 @@ public class ContactosController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         root=fxmlLoader.load();
         HelloController helloController=fxmlLoader.getController();
-        helloController.userChat("Pilar");
+        helloController.userChat("Santiago");
         helloController.Establecer(new Paquete("",9001,9002));
         //chatController.Establecer_Paquete(datos);
 //stage=(Stage)((Node)event.getSource()).getScene().getWindow();
