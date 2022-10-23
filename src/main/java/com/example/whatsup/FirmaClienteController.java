@@ -28,32 +28,12 @@ public class FirmaClienteController {
 
     @FXML
     void ckMiguel(ActionEvent event) throws IOException {
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("contactos.fxml"));
-        root=fxmlLoader.load();
 
-
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
     void ckPilar(ActionEvent event) throws IOException {
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("contactos.fxml"));
-        root=fxmlLoader.load();
-        ContactosController contactosController=fxmlLoader.getController();
-
-
-        scene=new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void ckSantiago(ActionEvent event) throws IOException {
-        //D:\IJ\proyectos\cerificado10001.txt
+//D:\IJ\proyectos\cerificado10001.txt
         String fd = JOptionPane.showInputDialog("Ruta del certificado: ");
 
         File file = new File(fd);
@@ -93,6 +73,11 @@ public class FirmaClienteController {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void ckSantiago(ActionEvent event) throws IOException {
+
     }
     private Stage stage;
     private Scene scene;
