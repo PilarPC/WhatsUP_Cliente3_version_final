@@ -22,9 +22,9 @@ public class ContactosController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         root=fxmlLoader.load();
         HelloController helloController=fxmlLoader.getController();
-        helloController.userChat("Miguel");
+        helloController.userChat("");
         //instanciar paquet
-        helloController.Establecer(new Paquete("",9001,9003));
+        helloController.Establecer(new Paquete("",9002,9003));
 //stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -37,8 +37,8 @@ public class ContactosController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         root=fxmlLoader.load();
         HelloController helloController=fxmlLoader.getController();
-        helloController.userChat("Santiago");
-        helloController.Establecer(new Paquete("",9001,9002));
+        helloController.userChat("");
+        helloController.Establecer(new Paquete("",9002,9001));
         //chatController.Establecer_Paquete(datos);
 //stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);

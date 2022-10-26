@@ -48,9 +48,9 @@ public class HelloController implements Runnable{
 
 
 
-    /*public void userChat(String n){
+    public void userChat(String n){
         nombre.setText(n);
-    }*/
+    }
 
     @FXML
     void ckregreso(ActionEvent event) throws IOException {
@@ -246,8 +246,9 @@ public class HelloController implements Runnable{
 
             //cifro mi número aleatorio con la llave pribada del receptor
             String stringLlave = numeroAleatorio+"";
-            int llaveCifradaEntera = Integer.parseInt(cesar(stringLlave, llave2F));
+            String llaveCifradaEntera = cesar(stringLlave, llave2F);
             paquete.setLlaveCifrada(llaveCifradaEntera);
+            paquete.setNumeroDeCertificado(businessLogic.numeroCertificado);
 
 
             paquete.setTipiM("sobre");
@@ -276,7 +277,7 @@ public class HelloController implements Runnable{
     ServerSocket servidor;
     public void run(){
         try{
-            servidor=new ServerSocket(9001);
+            servidor=new ServerSocket(9002);
 
             //ahora que acepte cualquier conexion que venga del exterior con el metodo accept
             while(true){
@@ -377,7 +378,7 @@ public class HelloController implements Runnable{
                 } else if (mensaje.getTipiM().equals("firmado")) {
                     int llave = 0;
                     String NumCertificado = mensaje.getNumeroDeCertificado()+"";
-                    String rutaCertificadoEmisor =  "D:\\IJ\\proyectos\\cerificado"+NumCertificado+".txt";
+                    String rutaCertificadoEmisor =  "D:\\IJ\\proyectos\\cerificado"+NumCertificado+".cer";
                     File file = new File(rutaCertificadoEmisor);
                     FileReader fr = null;
                     try {
@@ -457,7 +458,7 @@ public class HelloController implements Runnable{
                     System.out.println("Hash obtenido de la palabra " + paquete.getMensaje()+": " + resumen );
                     String mensajeFinal = cesar(firmaDes, llave2);
                     mnsEncrip.setText(mensajeDes);
-                    JOptionPane.showMessageDialog(jFrame, "Se verifico la firma del sobre \n firma: " + mensajeFinal+"\n Numero de Certificado: "+ paquete.getNumeroDeCertificado());
+                    JOptionPane.showMessageDialog(jFrame, "Se verifico la firma del sobre \n firma: " + mensajeFinal+"\n Numero de Certificado: "+ mensaje.getNumeroDeCertificado());
 
 
                 } else{
