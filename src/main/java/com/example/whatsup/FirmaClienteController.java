@@ -33,7 +33,7 @@ public class FirmaClienteController {
 
     @FXML
     void ckPilar(ActionEvent event) throws IOException {
-//D:\IJ\proyectos\cerificado10001.txt
+//D:\IJ\proyectos\cerificado10002.cer
         String fd = JOptionPane.showInputDialog("Ruta del certificado: ");
 
         File file = new File(fd);
@@ -49,7 +49,7 @@ public class FirmaClienteController {
         }
         fr.close(); // closes the stream and release the resources
 
-//----------------------------llave privada ---------------- D:\IJ\proyectos\llavePrivada10001.key
+//----------------------------llave privada ---------------- D:\IJ\proyectos\llavePrivada10002.key
         fd = JOptionPane.showInputDialog("Ruta de la llave privada: ");
 
         file = new File(fd);
